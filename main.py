@@ -4,6 +4,7 @@ from libs.COUPANG.createDF import *
 
 
 def main():
+    directory = designate_file_directory()
     text = getres(init_url)
     page = get_total_page(text)
     url_list = get_url_list(page)
@@ -11,7 +12,7 @@ def main():
     namelist,imglist,pricelist,ratinglist,reviewlist = loop_url_getinfo(url_list)
     df_tmp = fill_df(namelist, imglist, pricelist, ratinglist, reviewlist)
     df = concat_df(df_new,df_tmp)
-    to_excel(df)
+    to_excel(df,directory)
 
 
 if __name__== "__main__":
